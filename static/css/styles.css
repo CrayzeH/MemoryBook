@@ -1,13 +1,53 @@
 body {
     margin: 0;
     display: flex;
+    background-color: rgba(34, 43, 45, 50%);
     justify-content: center;
 }
 
 header {
     width: 86.66vw;
     height: 5.83vw;
-    background-color: black;
+    background-color: transparent;
     display: flex;
     justify-content: space-between;
+
+    .left-header {
+        h1 {
+            margin: 0;
+            font-size: 1.9vw;
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: bold;
+            color: white;
+        }
+    }
+
+    .right-header {
+        display: flex;
+        height: 100%;
+        width: 44.2vw;
+        align-items: center;
+        justify-content: space-between;
+
+        a {
+            text-decoration: none;
+            font-size: 1.3vw;
+            font-family: "Montserrat", sans-serif;
+            font-weight: normal;
+            color: white;
+        }
+
+        .authorize-button {
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3vw;
+            font-weight: bold;
+            color: white;
+            width: 16.3vw;
+            height: 3.17vw;
+            background-color: #DB2315;
+        }
+    }
 }
