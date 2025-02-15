@@ -10,5 +10,11 @@ def main():
         print(request.form["search-data"])
     return render_template("main.html")
 
+@app.route('/hero-search', methods=["GET", "POST"])
+def hero_search():
+    if request.method == "POST":
+        print(request.form)
+    return render_template("hero-search.html")
+
 if __name__ == '__main__':
     app.run()

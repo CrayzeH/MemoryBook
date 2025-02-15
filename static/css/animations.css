@@ -1,0 +1,24 @@
+.left-header:hover {
+    transform: rotate(2deg);
+}
+
+.right-header {
+    a:hover {
+        font-size: 1.32vw;
+        font-weight: 500;
+        transform: rotate(2deg);
+    }
+}
+
+h4 {
+    span:hover {
+        font-size: 1.35vw;
+    }
+}
+
+.navbar-footer {
+    a:hover {
+        color: white;
+        transform: rotate(2deg);
+    }
+}

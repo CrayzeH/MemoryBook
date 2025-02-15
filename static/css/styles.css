@@ -4,6 +4,9 @@ body {
     background-color: #222B2D;
     align-items: center;
     flex-direction: column;
+}
+
+.main-page {
     background-image: url("../images/SBO.png");
     background-size: 100%;
     background-repeat: no-repeat;
@@ -17,9 +20,13 @@ header {
     justify-content: space-between;
 
     .left-header {
+        transition: 0.3s;
         align-self: center;
 
-        h1 {
+        a {
+            text-decoration: none;
+            cursor: pointer;
+
             margin: 0;
             font-size: 1.9vw;
             font-family: "Bebas Neue", sans-serif;
@@ -36,6 +43,7 @@ header {
         justify-content: space-between;
 
         a {
+            transition: 0.3s;
             text-decoration: none;
             font-size: 1.3vw;
             font-family: "Montserrat", sans-serif;
@@ -65,6 +73,12 @@ header {
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
     color: white;
+}
+
+.header-line {
+    width: 100%;
+    height: 0.3vw;
+    border-bottom: 1px solid white;
 }
 
 .global-input {
@@ -98,6 +112,8 @@ h4 {
     font-weight: normal;
 
     span {
+        cursor: pointer;
+        transition: 0.3s;
         font-weight: bold;
         text-decoration: underline white;
     }
@@ -111,10 +127,79 @@ h4 {
     background-color: black;
     flex-direction: column;
     justify-content: space-between;
+
     h2 {
         font-size: 2.5vw;
         font-weight: bold;
         font-family: "Montserrat", sans-serif;
         color: white;
+    }
+}
+
+h3 {
+    font-weight: normal;
+    font-size: 1.87vw;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    width: 86.66vw;
+    text-align: center;
+    line-height: 2.5vw;
+}
+
+.mapa {
+    width: 86.66vw;
+    height: 36.45vw;
+    background-color: black;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7vw;
+    width: 100%;
+    align-items: center;
+    height: 34.16vw;
+    justify-content: center;
+    background-color: #192426;
+
+    img {
+        margin-top: 2vw;
+        width: 7.8vw;
+        height: 9vw;
+    }
+
+    h1 {
+        margin-top: 0.6vw;
+        text-align: center;
+        font-size: 1.9vw;
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: bold;
+        color: white;
+    }
+
+    .navbar-footer {
+        margin-top: 1.7vw;
+        width: 66.5vw;
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1.87vw;
+            font-family: "Montserrat", sans-serif;
+            font-weight: normal;
+            color: rgba(255, 255, 255, 75%);
+            text-decoration: none;
+        }
+    }
+
+    h6 {
+        width: 42.08vw;
+        text-align: center;
+        font-size: 1.04vw;
+        font-family: "Montserrat", sans-serif;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 70%);
     }
 }
