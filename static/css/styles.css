@@ -1,18 +1,24 @@
 body {
     margin: 0;
     display: flex;
-    background-color: rgba(34, 43, 45, 50%);
-    justify-content: center;
+    background-color: #222B2D;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("../images/SBO.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 header {
     width: 86.66vw;
-    height: 5.83vw;
+    height: 7vw;
     background-color: transparent;
     display: flex;
     justify-content: space-between;
 
     .left-header {
+        align-self: center;
+
         h1 {
             margin: 0;
             font-size: 1.9vw;
@@ -49,5 +55,66 @@ header {
             height: 3.17vw;
             background-color: #DB2315;
         }
+    }
+}
+
+.hello-message {
+    text-align: center;
+    margin-top: 13vw;
+    font-size: 3.33vw;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+}
+
+.global-input {
+    width: 46.7vw;
+    height: 5.41vw;
+    background-color: white;
+    background-image: url("../images/search-icon.png");
+    background-size: 2vw;
+    padding-left: 2.5vw;
+    font-size: 1.3vw;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    background-repeat: no-repeat;
+    background-position: 96%;
+    outline: none;
+    border: none;
+}
+
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+h4 {
+    font-size: 1.3vw;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+
+    span {
+        font-weight: bold;
+        text-decoration: underline white;
+    }
+}
+
+.persons {
+    margin-top: 20vw;
+    width: 86.66vw;
+    height: 64.5vw;
+    display: flex;
+    background-color: black;
+    flex-direction: column;
+    justify-content: space-between;
+    h2 {
+        font-size: 2.5vw;
+        font-weight: bold;
+        font-family: "Montserrat", sans-serif;
+        color: white;
     }
 }

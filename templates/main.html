@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/swiper-bundle.min.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,5 +22,17 @@
             <a class="authorize-button">Авторизация</a>
         </div>
     </header>
+    <h1 class="hello-message">Книга-мемориал</br>воинов-оренбуржцев</h1>
+    <form name="form" method="post">
+        <input maxlength="55" class="global-input" name="search-data" type="search" placeholder="Найдите своего героя">
+    </form>
+    <h4>Или попробуйте <span><a>расширенный поиск</a></span></h4>
+    <div class="persons">
+        <h2>Герои Оренбуржья</h2>
+        <div class="persons-photos">
+            <div class="person">
+            </div>
+        </div>
+    </div>
 </body>
 </html>

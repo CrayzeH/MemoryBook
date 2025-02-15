@@ -6,6 +6,8 @@ GLOBAL_AUTHORIZE = 0
 
 @app.route('/', methods=["GET", "POST"])
 def main():
+    if request.method == "POST":
+        print(request.form["search-data"])
     return render_template("main.html")
 
 if __name__ == '__main__':
