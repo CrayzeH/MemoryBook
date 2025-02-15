@@ -4,8 +4,7 @@
 
 .right-header {
     a:hover {
-        font-size: 1.32vw;
-        font-weight: 500;
+        text-decoration: underline white;
         transform: rotate(2deg);
     }
 }
@@ -21,4 +20,16 @@ h4 {
         color: white;
         transform: rotate(2deg);
     }
+}
+
+.global-input:focus {
+    border-radius: 0.4vw;
+}
+
+.hero-search:focus {
+    border-radius: 0.4vw;
+}
+
+.small-search-bar:focus {
+    border-radius: 0.4vw;
 }

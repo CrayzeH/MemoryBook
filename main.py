@@ -13,8 +13,20 @@ def main():
 @app.route('/hero-search', methods=["GET", "POST"])
 def hero_search():
     if request.method == "POST":
-        print(request.form)
+        print(request.form['input-name'])
     return render_template("hero-search.html")
+
+@app.route('/contacts', methods=["GET", "POST"])
+def contacts():
+    if request.method == "POST":
+        print(request.form)
+    return render_template("contacts.html")
+
+@app.route('/full_search', methods=["GET", "POST"])
+def full_search():
+    if request.method == "POST":
+        print(request.form)
+    return render_template("full-search.html")
 
 if __name__ == '__main__':
     app.run()

@@ -27,7 +27,7 @@
 <form name="form" method="post">
     <input maxlength="55" class="global-input" name="search-data" type="search" placeholder="Найдите своего героя">
 </form>
-<h4>Или попробуйте <span><a>расширенный поиск</a></span></h4>
+<h4>Или попробуйте <span><a href="{{ url_for('full_search') }}">расширенный поиск</a></span></h4>
 <div class="persons">
     <h2>Герои Оренбуржья</h2>
     <div class="persons-photos">
@@ -48,10 +48,20 @@
         <a>Герои</a>
         <a>Боевые действия</a>
         <a>Техническая поддержка</a>
-        <a>Контакты</a>
+        <a href="{{ url_for('contacts') }}">Контакты</a>
     </div>
     <h6>Любое использование материалов допускается только с согласия редакции. Все права на изображения и тексты
         принадлежат их авторам. © 2025. Все права защищены.</h6>
 </footer>
 </body>
+<script>
+    let resizeTimer;
+window.addEventListener("resize",()=>{
+  document.body.classList.add("resize-animation-stopper");
+  clearTimeout(resizeTimer);
+  resizeTimer =setTimeout(()=>{
+    document.body.classList.remove("resize-animation-stopper");
+  },400);
+});
+</script>
 </html>

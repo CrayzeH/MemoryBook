@@ -26,45 +26,18 @@
 <div class="header-line">
 
 </div>
-    <form name="form" method="post">
-        <input class="hero-search" name="input-name" type="search" placeholder="Поиск">
-        <div class="words-bar">
-            <h1 class="word">А</h1>
-            <h1 class="word">Б</h1>
-            <h1 class="word">В</h1>
-            <h1 class="word">Г</h1>
-            <h1 class="word">Д</h1>
-            <h1 class="word">Е</h1>
-            <h1 class="word">Ё</h1>
-            <h1 class="word">Ж</h1>
-            <h1 class="word">З</h1>
-            <h1 class="word">И</h1>
-            <h1 class="word">К</h1>
-            <h1 class="word">Л</h1>
-            <h1 class="word">М</h1>
-            <h1 class="word">Н</h1>
-            <h1 class="word used">О</h1>
-            <h1 class="word">П</h1>
-            <h1 class="word">Р</h1>
-            <h1 class="word">С</h1>
-            <h1 class="word">Т</h1>
-            <h1 class="word">У</h1>
-            <h1 class="word">Ф</h1>
-            <h1 class="word" style="margin-right: 0">Х</h1>
-            <h1 class="word">Ц</h1>
-            <h1 class="word">Ч</h1>
-            <h1 class="word">Ш</h1>
-            <h1 class="word">Щ</h1>
-            <h1 class="word">Ы</h1>
-            <h1 class="word">Э</h1>
-            <h1 class="word">Ю</h1>
-            <h1 class="word">Я</h1>
+<h1>Расширенный поиск</h1>
+    <form class="inputs" name="form" method="post">
+        <input class="hero-search" name="any" type="search" placeholder="Поиск">
+        <div class="string-of-inputs">
+            <input class="small-search-bar" type="search" name="consc-date" placeholder="Дата призыва">
+            <input class="small-search-bar" type="search" name="death-date" placeholder="Дата смерти">
+        </div>
+        <div class="string-of-inputs">
+            <input class="small-search-bar" type="search" name="consc-date" placeholder="Воинское звание">
+            <input class="small-search-bar" type="search" name="death-date" placeholder="Награды">
         </div>
     </form>
-    <h1 class="title">Герои Оренбуржья</h1>
-    <div class="heroes">
-
-    </div>
 <footer>
     <img src="{{ url_for('static', filename='images/emblem.png') }}">
     <h1>КНИГА ПАМЯТИ</br> ОРЕНБУРГСКОЙ ОБЛАСТИ</h1>
