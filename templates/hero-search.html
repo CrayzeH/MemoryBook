@@ -105,6 +105,9 @@
         принадлежат их авторам. © 2025. Все права защищены.</h6>
 </footer>
 </body>
+<div class="dispno">
+    <h1 id="sigma">{{ only_one }}</h1>
+</div>
 <script>
     let resizeTimer;
     window.addEventListener("resize", () => {
@@ -116,18 +119,52 @@
     });
 
     let selectedLetter = '';
+    let name = document.getElementById('sigma').textContent;
     let first = document.getElementById('1');
     let second = document.getElementById('2');
     let third = document.getElementById('3');
     const letterButtons = document.querySelectorAll('.word');
+    console.log(name)
+    if (name === '') {
+        first.classList.remove('dispno');
+        second.classList.remove('dispno');
+        third.classList.remove('dispno');
+    } else if (name === "[1]") {
+        first.classList.remove('dispno');
+        second.classList.add('dispno');
+        third.classList.add('dispno');
+    } else if (name === "[2]") {
+        first.classList.add('dispno');
+        second.classList.remove('dispno');
+        third.classList.add('dispno');
+    } else if (name === "[3]") {
+        first.classList.add('dispno');
+        second.classList.add('dispno');
+        third.classList.remove('dispno');
+    } else if (name === "[1, 2]"){
+        first.classList.remove('dispno');
+        second.classList.remove('dispno');
+        third.classList.add('dispno');
+    } else if (name === "[1, 3]"){
+        first.classList.remove('dispno');
+        second.classList.add('dispno');
+        third.classList.remove('dispno');
+    } else if (name === "[2, 3]"){
+        first.classList.add('dispno');
+        second.classList.remove('dispno');
+        third.classList.remove('dispno');
+    } else if (name === "[1, 2, 3]"){
+        first.classList.remove('dispno');
+        second.classList.remove('dispno');
+        third.classList.remove('dispno');
+    }
 
     function handleLetterClick(event) {
         const clickedLetter = event.target;
         if (clickedLetter.classList.contains('used')) {
             clickedLetter.classList.remove('used');
             selectedLetter = "";
-        }
-        else {
+        } else {
             letterButtons.forEach(btn => btn.classList.remove('used'));
             clickedLetter.classList.add('used');
             selectedLetter = clickedLetter.textContent;
@@ -137,23 +174,19 @@
             first.classList.remove('dispno');
             second.classList.add('dispno');
             third.classList.add('dispno');
-        }
-        else if (selectedLetter === "Ч") {
+        } else if (selectedLetter === "Ч") {
             first.classList.add('dispno');
             second.classList.remove('dispno');
             third.classList.add('dispno');
-        }
-        else if (selectedLetter === "Б") {
+        } else if (selectedLetter === "Б") {
             first.classList.add('dispno');
             second.classList.add('dispno');
             third.classList.remove('dispno');
-        }
-        else if (selectedLetter === "") {
+        } else if (selectedLetter === "") {
             first.classList.remove('dispno');
             second.classList.remove('dispno');
             third.classList.remove('dispno');
-        }
-        else {
+        } else {
             first.classList.add('dispno');
             second.classList.add('dispno');
             third.classList.add('dispno');

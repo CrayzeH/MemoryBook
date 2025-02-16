@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 GLOBAL_AUTHORIZE = 0
 
+
 @app.route('/', methods=["GET", "POST"])
 def main():
     persons = get_warrior()
@@ -14,12 +15,24 @@ def main():
         print(request.form["search-data"])
     return render_template("main.html", is_authorized=GLOBAL_AUTHORIZE, persons=persons)
 
+
 @app.route('/hero-search', methods=["GET", "POST"])
 def hero_search():
+    only_one = []
     persons = get_warrior()
     if request.method == "POST":
-        print(request.form['input-name'])
-    return render_template("hero-search.html", is_authorized=GLOBAL_AUTHORIZE, persons=persons)
+        name = request.form['input-name']
+        first_name = persons[0]['fio']
+        second_name = persons[1]['fio']
+        third_name = persons[2]['fio']
+        if name in first_name:
+            only_one.append(1)
+        if name in second_name:
+            only_one.append(2)
+        if name in third_name:
+            only_one.append(3)
+    return render_template("hero-search.html", is_authorized=GLOBAL_AUTHORIZE, persons=persons, only_one=only_one)
+
 
 @app.route('/contacts', methods=["GET", "POST"])
 def contacts():
@@ -27,17 +40,20 @@ def contacts():
         print(request.form)
     return render_template("contacts.html", is_authorized=GLOBAL_AUTHORIZE)
 
+
 @app.route('/full_search', methods=["GET", "POST"])
 def full_search():
     if request.method == "POST":
         print(request.form)
     return render_template("full-search.html", is_authorized=GLOBAL_AUTHORIZE)
 
+
 @app.route('/send_data', methods=["GET", "POST"])
 def send_data():
     if request.method == "POST":
         print(request.form)
     return render_template("send-data.html", is_authorized=GLOBAL_AUTHORIZE)
+
 
 @app.route('/authorization', methods=["GET", "POST"])
 def authorize():
@@ -47,12 +63,14 @@ def authorize():
         return redirect(url_for('send_data'))
     return render_template("authorization.html", is_authorized=GLOBAL_AUTHORIZE)
 
+
 @app.route('/boec/<int:boec_id>', methods=["GET", "POST"])
 def boec(boec_id):
     print(boec_id)
     persons = get_warrior()
     print(json.dumps(persons, indent=4, ensure_ascii=False))
     return render_template('boec.html', is_authorized=GLOBAL_AUTHORIZE, persons=persons, boec_id=boec_id)
+
 
 if __name__ == '__main__':
     app.run()
