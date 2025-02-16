@@ -88,15 +88,13 @@ window.addEventListener("resize",()=>{
   },400);
 });
    
-    let selectedLetter = 'О';
+    let selectedLetter = '0';
     const letterButtons = document.querySelectorAll('.word');
     function handleLetterClick(event) {
         letterButtons.forEach(btn => btn.classList.remove('used'));
         const clickedLetter = event.target;
         clickedLetter.classList.add('used');
-        
         selectedLetter = clickedLetter.textContent;
-        console.log('Ты пунькнул букву:', selectedLetter);
     }
     letterButtons.forEach(button => {
         button.addEventListener('click', handleLetterClick);
