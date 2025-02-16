@@ -33,3 +33,230 @@ h4 {
 .small-search-bar:focus {
     border-radius: 0.4vw;
 }
+
+
+/* Основные анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Классы для применения анимаций */
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.fade-out {
+    animation: fadeOut 1s ease-in-out;
+}
+
+.slide-in-left {
+    animation: slideInFromLeft 1s ease-in-out;
+}
+
+.slide-in-right {
+    animation: slideInFromRight 1s ease-in-out;
+}
+
+.slide-in-top {
+    animation: slideInFromTop 1s ease-in-out;
+}
+
+.slide-in-bottom {
+    animation: slideInFromBottom 1s ease-in-out;
+}
+
+.bounce {
+    animation: bounce 1s;
+}
+
+.rotate {
+    animation: rotate 2s linear infinite;
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+/* Анимации при наведении */
+.hover-fade-in:hover {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.hover-fade-out:hover {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+.hover-slide-in-left:hover {
+    animation: slideInFromLeft 0.5s ease-in-out;
+}
+
+.hover-slide-in-right:hover {
+    animation: slideInFromRight 0.5s ease-in-out;
+}
+
+.hover-slide-in-top:hover {
+    animation: slideInFromTop 0.5s ease-in-out;
+}
+
+.hover-slide-in-bottom:hover {
+    animation: slideInFromBottom 0.5s ease-in-out;
+}
+
+.hover-bounce:hover {
+    animation: bounce 0.5s;
+}
+
+.hover-rotate:hover {
+    animation: rotate 1s linear infinite;
+}
+
+.hover-pulse:hover {
+    animation: pulse 1s infinite;
+}
+
+/* Анимации для кнопок */
+
+.button-hover-effect:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.button-active-effect:active {
+    transform: scale(0.9);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Анимации для текста */
+.text-fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.text-slide-in-left {
+    animation: slideInFromLeft 1s ease-in-out;
+}
+
+.text-slide-in-right {
+    animation: slideInFromRight 1s ease-in-out;
+}
+
+.text-slide-in-top {
+    animation: slideInFromTop 1s ease-in-out;
+}
+
+.text-slide-in-bottom {
+    animation: slideInFromBottom 1s ease-in-out;
+}
+
+/* Анимации для изображений */
+.image-zoom-in:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-rotate:hover {
+    transform: rotate(15deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.image-slide-in-left {
+    animation: slideInFromLeft 1s ease-in-out;
+}
+
+.image-slide-in-right {
+    animation: slideInFromRight 1s ease-in-out;
+}
+
+.image-slide-in-top {
+    animation: slideInFromTop 1s ease-in-out;
+}
+
+.image-slide-in-bottom {
+    animation: slideInFromBottom 1s ease-in-out;
+}
