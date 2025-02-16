@@ -141,9 +141,9 @@ h4 {
     width: 86.66vw;
     height: 64.5vw;
     display: flex;
-    background-color: black;
+    background-color: transparent;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     h2 {
         font-size: 2.5vw;

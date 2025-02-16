@@ -1,0 +1,57 @@
+.persons-cont {
+    width: 86.66vw;
+    height: 48.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.uno-person {
+    cursor: pointer;
+    width: 32%;
+    height: 100%;
+    img {
+        width: 27.18vw;
+        height: 39.73vw;
+    }
+    h1 {
+        margin: 0.2vw 0 0 0;
+        width: 27.18vw;
+        font-size: 1.87vw;
+        font-weight: bold;
+        font-family: "Montserrat", sans-serif;
+        color: white;
+    }
+    h2 {
+        margin-top: 0.2vw;
+        width: 27.18vw;
+        font-size: 1.25vw;
+        font-family: "Montserrat", sans-serif;
+        font-weight: normal;
+        color: white;
+    }
+}
+
+.full-warriors {
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    width: 86.66vw;
+    background-color: #DB2315;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 1.25vw;
+    padding-top: 1.3vw;
+    margin-top: 0;
+    margin-bottom: 2vw;
+    padding-bottom: 1.3vw;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+}
+
+.full-warriors:hover {
+    border-radius: 0.4vw;
+    background-color: #dd4c3f;
+}

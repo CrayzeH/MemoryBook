@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/persons.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,11 +35,25 @@
 <h4>Или попробуйте <span><a href="{{ url_for('full_search') }}">расширенный поиск</a></span></h4>
 <div class="persons">
     <h2>Герои Оренбуржья</h2>
-    <div class="persons-photos">
-        <div class="person">
+    <div class="persons-cont">
+        <div class="uno-person">
+            <img src="{{ url_for('static', filename='images/1.png') }}">
+            <h1>{{ persons[0]['fio'] }}</h1>
+            <h2>Участник СВО</h2>
+        </div>
+        <div class="uno-person">
+            <img src="{{ url_for('static', filename='images/2.png') }}">
+            <h1>{{ persons[1]['fio'] }}</h1>
+            <h2>Участник СВО</h2>
+        </div>
+        <div class="uno-person">
+            <img src="{{ url_for('static', filename='images/3.png') }}">
+            <h1>{{ persons[2]['fio'] }}</h1>
+            <h2>Участник Афганской войны</h2>
         </div>
     </div>
 </div>
+<a href="{{ url_for('hero_search') }}" class="full-warriors">Полный список</a>
 <h3>Если вы являетесь близким родственником погибшего человека в боевых действиях, то вы можете направить уточненную
     информацию в виде электронного документа по адресу электронной почты: <span style="font-weight: bold;">office36@mail.orb.ru</span>
 </h3>

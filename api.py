@@ -1,19 +1,25 @@
 import requests
+import json
+from base64 import b64encode
 
-def http_get_request(url: str, params: dict = None, headers: dict = None):
-    try:
-        response = requests.get(url, params=params, headers=headers)
-        response.raise_for_status()  # Проверка на ошибки
-        return response.json()  # Возвращаем JSON-ответ
-    except requests.exceptions.RequestException as e:
-        print(f"Ошибка при выполнении запроса: {e}")
-        return None
+url = 'https://geois2.orb.ru/api/resource/8804/feature/'
+username = "hackathon_27"
+password = "hackathon_27_25"
 
-# Пример использования:
-url = "http://example.com/api/data"
-params = {"key": "value"}
-headers = {"Authorization": "Bearer your_token"}
+def basic_auth(username, password):
+    token = b64encode(f"{username}:{password}".encode('utf-8')).decode("ascii")
+    return f'Basic {token}'
 
-data = http_get_request(url, params=params, headers=headers)
-if data:
-    print("Данные получены:", data)
+def get_warrior():
+    headers = {
+        'Accept': '*/*',
+        'Authorization': basic_auth(username, password),
+        'id': '1'
+    }
+    response = requests.get(url, headers=headers)
+    response = response.json()
+    first = response[0]
+    second = response[1]
+    third = response[2]
+    first, second, third = first['fields'], second['fields'], third['fields']
+    return first, second, third

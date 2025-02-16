@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
+from api import get_warrior
+import json
 
 app = Flask(__name__)
 
@@ -6,9 +8,11 @@ GLOBAL_AUTHORIZE = 0
 
 @app.route('/', methods=["GET", "POST"])
 def main():
+    persons = get_warrior()
+    print(json.dumps(persons, indent=4, ensure_ascii=False))
     if request.method == "POST":
         print(request.form["search-data"])
-    return render_template("main.html", is_authorized=GLOBAL_AUTHORIZE)
+    return render_template("main.html", is_authorized=GLOBAL_AUTHORIZE, persons=persons)
 
 @app.route('/hero-search', methods=["GET", "POST"])
 def hero_search():
@@ -39,6 +43,7 @@ def authorize():
     global GLOBAL_AUTHORIZE
     if request.method == "POST":
         GLOBAL_AUTHORIZE = 1
+        return redirect(url_for('send_data'))
     return render_template("authorization.html", is_authorized=GLOBAL_AUTHORIZE)
 
 if __name__ == '__main__':
