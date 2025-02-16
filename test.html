@@ -5,6 +5,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.min.js"></script>
     <link rel="icon" href="img/png/Лого.png" type="image/x-icon">
+    <style>
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { margin-top: 20px; padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .form-group input[type="file"] { border: 1px dashed #ccc; padding: 10px; }
+    </style>
 </head>
 <body>
     <h1>Сведения о жителе Оренбурга</h1>
@@ -38,7 +45,7 @@
         <input type="text" id="d_loc" required>
     </div>
     <div class="form-group">
-        <label for="mil_com">Наименование военного комиссариата, призвавшего на военную службу:</label>
+        <label for="mil_com">Военный комиссариат:</label>
         <input type="text" id="mil_com" required>
     </div>
     <div class="form-group">
@@ -81,38 +88,45 @@
         </select>
     </div>
     <div class="form-group">
+        <label for="bio">Краткая биография:</label>
+        <input type="text" id="bio" required>
+    </div>
+    <div class="form-group">
         <label for="photo">Фотография:</label>
         <input type="file" id="photo" accept="image/*" required>
     </div>
-  <!--  <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-    </div>
     <div class="form-group">
-        <label for="message">Сообщение:</label>
-        <textarea id="message" rows="4" required></textarea>
-    </div> -->
+        <label for="medals">Изображения медалей:</label>
+        <input type="file" id="medals" accept="image/*" multiple>
+    </div>
     <button onclick="generatePDF()">Отправить сведения</button>
+
     <script>
         function generatePDF() {
             const photoInput = document.getElementById('photo');
-            const file = photoInput.files[0];
+            const medalsInput = document.getElementById('medals');
             
-            if (!file) {
+            if (!photoInput.files[0]) {
                 alert('Пожалуйста, загрузите фотографию');
                 return;
             }
 
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                createPDF(e.target.result);
+            const readerPhoto = new FileReader();
+            readerPhoto.onload = async function(e) {
+                const medalsFiles = Array.from(medalsInput.files);
+                const medalsData = await Promise.all(medalsFiles.map(file => 
+                    new Promise((resolve) => {
+                        const reader = new FileReader();
+                        reader.onload = (e) => resolve(e.target.result);
+                        reader.readAsDataURL(file);
+                    })
+                ));
+                createPDF(e.target.result, medalsData);
             };
-            
-            reader.readAsDataURL(file);
+            readerPhoto.readAsDataURL(photoInput.files[0]);
         }
 
-        function createPDF(photoData) {
+        function createPDF(photoData, medalsData) {
             const mil_ran = document.getElementById('rank');
             if(mil_ran.value === '') {
                 alert('Пожалуйста, выберите воинское звание');
@@ -125,22 +139,18 @@
             }
             const docDefinition = {
                 content: [
-                { 
-                    stack: [
-                    { text: `${document.getElementById('s_name').value} ${document.getElementById('name').value} ${document.getElementById('l_name').value}`, style: 'header' },
                     { 
-                        text: ` `,
-                        style: 'dates'
-                    }
-                ],
-                margin: [0, 0, 0, -42]
-            },
+                        stack: [
+                            { text: `${document.getElementById('s_name').value} ${document.getElementById('name').value} ${document.getElementById('l_name').value}`, style: 'header' },
+                            { text: `${document.getElementById('b_date').value} - ${document.getElementById('d_date').value}`, style: 'dates' }
+                        ],
+                        margin: [0, 0, 0, 10]
+                    },
                     {
                         columns: [
                             {
                                 width: '*',
                                 text: [
-                                `${document.getElementById('b_date').value} - ${document.getElementById('d_date').value}\n\n`,
                                     `Место рождения: ${document.getElementById('b_loc').value}\n`,
                                     `Воинское звание: ${mil_ran.value} ${mil_br.value}\n`,
                                     `Дата смерти: ${document.getElementById('d_date').value}\n`,
@@ -151,10 +161,31 @@
                             {
                                 width: 150,
                                 image: photoData,
-                                fit: [150, 200],
-                                margin: [0, 0, 0, 0]
+                                fit: [150, 200]
                             }
                         ]
+                    },
+                    {
+                        text: 'Награды и медали:',
+                        style: 'medalsHeader',
+                        margin: [0, 20, 0, 10]
+                    },
+                    {
+                        columns: medalsData.map(medal => ({
+                            width: 50,
+                            image: medal,
+                            fit: [50, 50],
+                            margin: [0, 0, 10, 0]
+                        }))
+                    },
+                    { 
+                        text: `Краткая биография:`,
+                        style: 'bioHeader',
+                        margin: [0, 20, 0, 5]
+                    },
+                    { 
+                        text: `${document.getElementById('bio').value}`,
+                        style: 'bioText'
                     },
                     { 
                         text: `Создано: ${new Date().toLocaleString()}`,
@@ -163,11 +194,11 @@
                     }
                 ],
                 styles: {
-                    header: { 
-                        fontSize: 22, 
-                        bold: true,
-                        margin: [0, 0, 0, 20]
-                    }
+                    header: { fontSize: 22, bold: true, margin: [0, 0, 0, 5] },
+                    dates: { fontSize: 12, color: '#555', margin: [0, 0, 0, 10] },
+                    medalsHeader: { fontSize: 14, bold: true },
+                    bioHeader: { fontSize: 14, bold: true },
+                    bioText: { fontSize: 12, lineHeight: 1.5 }
                 },
                 defaultStyle: {
                     font: 'Roboto',
