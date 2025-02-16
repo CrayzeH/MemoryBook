@@ -1,7 +1,8 @@
 import requests
 
-url = 'https://geois2.orb.ru/api/component/feature_layer/mvt?resource=8804&z={z}&x={x}&y={y}'
+url = 'https://geois2.orb.ru/resource/8805/display?panel=layers'
 headers = {
+    'Accept' : '/',
     'Authorization': 'hackathon_27:hackathon_27_25'
 }
 
