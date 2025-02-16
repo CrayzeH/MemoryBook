@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ДокФорм</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.min.js"></script>
+    <link rel="icon" href="img/png/Лого.png" type="image/x-icon">
+</head>
+<body>
+    <h1>Сведения о жителе Оренбурга</h1>
+
+    <div class="form-group">
+        <label for="s_name">Фамилия:</label>
+        <input type="text" id="s_name" required>
+    </div>
+    <div class="form-group">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" required>
+    </div>
+    <div class="form-group">
+        <label for="l_name">Отчество:</label>
+        <input type="text" id="l_name" required>
+    </div>
+    <div class="form-group">
+        <label for="b_date">Дата рождения:</label>
+        <input type="text" id="b_date" required>
+    </div>
+    <div class="form-group">
+        <label for="b_loc">Место рождения:</label>
+        <input type="text" id="b_loc" required>
+    </div>
+    <div class="form-group">
+        <label for="d_date">Дата смерти:</label>
+        <input type="text" id="d_date" required>
+    </div>
+    <div class="form-group">
+        <label for="d_loc">Место захоронения:</label>
+        <input type="text" id="d_loc" required>
+    </div>
+    <div class="form-group">
+        <label for="mil_com">Наименование военного комиссариата, призвавшего на военную службу:</label>
+        <input type="text" id="mil_com" required>
+    </div>
+    <div class="form-group">
+        <label for="rank">Воинское звание:</label>
+        <select id="rank" required>
+            <option value="">Выберите звание</option>
+            <option value="Рядовой">Рядовой</option>
+            <option value="Ефрейтор">Ефрейтор</option>
+            <option value="Мл. Сержант">Младший сержант</option>
+            <option value="Сержант">Сержант</option>
+            <option value="Ст. Сержант">Старший сержант</option>
+            <option value="Старшина">Старшина</option>
+            <option value="Прапорщик">Прапорщик</option>
+            <option value="Лейтенант">Лейтенант</option>
+            <option value="Ст. Лейтенант">Старший лейтенант</option>
+            <option value="Капитан">Капитан</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="military_branch">Род войск:</label>
+        <select id="military_branch" required>
+            <option value="">Выберите род войск</option>
+            <optgroup label="Современные (РФ)">
+                <option value="Сухопутных войск">Сухопутные войска</option>
+                <option value="ВКС РФ">Воздушно-космические силы</option>
+                <option value="ВМФ РФ">Военно-морской флот</option>
+                <option value="РВСН РФ">Ракетные войска стратегического назначения</option>
+                <option value="ВДВ РФ">Воздушно-десантные войска</option>
+            </optgroup>
+            <optgroup label="Исторические (СССР)">
+                <option value="Стрелковых войск">Стрелковые войска</option>
+                <option value="Танковых войск СССР">Танковые войска</option>
+                <option value="Войск ПВО СССР">Войска ПВО</option>
+                <option value="ВДВ СССР">Воздушно-десантные войска</option>
+                <option value="РВСН СССР">Ракетные войска стратегического назначения</option>
+                <option value="ВМФ СССР">Военно-морской флот</option>
+                <option value="ВВС СССР">Военно-воздушные силы</option>
+                <option value="Железнодорожных войск СССР">Железнодорожные войска</option>
+            </optgroup>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="photo">Фотография:</label>
+        <input type="file" id="photo" accept="image/*" required>
+    </div>
+  <!--  <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Сообщение:</label>
+        <textarea id="message" rows="4" required></textarea>
+    </div> -->
+    <button onclick="generatePDF()">Отправить сведения</button>
+    <script>
+        function generatePDF() {
+            const photoInput = document.getElementById('photo');
+            const file = photoInput.files[0];
+            
+            if (!file) {
+                alert('Пожалуйста, загрузите фотографию');
+                return;
+            }
+
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                createPDF(e.target.result);
+            };
+            
+            reader.readAsDataURL(file);
+        }
+
+        function createPDF(photoData) {
+            const mil_ran = document.getElementById('rank');
+            if(mil_ran.value === '') {
+                alert('Пожалуйста, выберите воинское звание');
+                return;
+            }
+            const mil_br = document.getElementById('military_branch');
+            if(mil_br.value === '') {
+                alert('Пожалуйста, выберите род войск');
+                return;
+            }
+            const docDefinition = {
+                content: [
+                { 
+                    stack: [
+                    { text: `${document.getElementById('s_name').value} ${document.getElementById('name').value} ${document.getElementById('l_name').value}`, style: 'header' },
+                    { 
+                        text: ` `,
+                        style: 'dates'
+                    }
+                ],
+                margin: [0, 0, 0, -42]
+            },
+                    {
+                        columns: [
+                            {
+                                width: '*',
+                                text: [
+                                `${document.getElementById('b_date').value} - ${document.getElementById('d_date').value}\n\n`,
+                                    `Место рождения: ${document.getElementById('b_loc').value}\n`,
+                                    `Воинское звание: ${mil_ran.value} ${mil_br.value}\n`,
+                                    `Дата смерти: ${document.getElementById('d_date').value}\n`,
+                                    `Место захоронения: ${document.getElementById('d_loc').value}\n`,
+                                    `Военкомат: ${document.getElementById('mil_com').value}`
+                                ]
+                            },
+                            {
+                                width: 150,
+                                image: photoData,
+                                fit: [150, 200],
+                                margin: [0, 0, 0, 0]
+                            }
+                        ]
+                    },
+                    { 
+                        text: `Создано: ${new Date().toLocaleString()}`,
+                        fontSize: 10,
+                        margin: [0, 20]
+                    }
+                ],
+                styles: {
+                    header: { 
+                        fontSize: 22, 
+                        bold: true,
+                        margin: [0, 0, 0, 20]
+                    }
+                },
+                defaultStyle: {
+                    font: 'Roboto',
+                    lineHeight: 1.3
+                }
+            };
+            pdfMake.createPdf(docDefinition).download(`Военнослужащий_${document.getElementById('s_name').value} ${document.getElementById('name').value} ${document.getElementById('l_name').value}.pdf`);
+        }
+    </script>
+</body>
+</html>
