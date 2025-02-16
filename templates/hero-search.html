@@ -14,7 +14,7 @@
 </head>
 <body>
 <header>
-    <div class="left-header">
+    <div class="left-header button-hover-effect">
         <a href="{{ url_for('main') }}">КНИГА ПАМЯТИ</br> ОРЕНБУРГСКОЙ ОБЛАСТИ</a>
     </div>
     <div class="right-header">
@@ -26,45 +26,45 @@
 <div class="header-line">
 
 </div>
-    <form name="form" method="post">
-        <input class="hero-search" name="input-name" type="search" placeholder="Поиск">
-        <div class="words-bar">
-            <h1 class="word">А</h1>
-            <h1 class="word">Б</h1>
-            <h1 class="word">В</h1>
-            <h1 class="word">Г</h1>
-            <h1 class="word">Д</h1>
-            <h1 class="word">Е</h1>
-            <h1 class="word">Ё</h1>
-            <h1 class="word">Ж</h1>
-            <h1 class="word">З</h1>
-            <h1 class="word">И</h1>
-            <h1 class="word">К</h1>
-            <h1 class="word">Л</h1>
-            <h1 class="word">М</h1>
-            <h1 class="word">Н</h1>
-            <h1 class="word used">О</h1>
-            <h1 class="word">П</h1>
-            <h1 class="word">Р</h1>
-            <h1 class="word">С</h1>
-            <h1 class="word">Т</h1>
-            <h1 class="word">У</h1>
-            <h1 class="word">Ф</h1>
-            <h1 class="word" style="margin-right: 0">Х</h1>
-            <h1 class="word">Ц</h1>
-            <h1 class="word">Ч</h1>
-            <h1 class="word">Ш</h1>
-            <h1 class="word">Щ</h1>
-            <h1 class="word">Ы</h1>
-            <h1 class="word">Э</h1>
-            <h1 class="word">Ю</h1>
-            <h1 class="word">Я</h1>
-        </div>
-    </form>
-    <h1 class="title">Герои Оренбуржья</h1>
-    <div class="heroes">
-
+<form name="form" method="post">
+    <input class="hero-search" name="input-name" type="search" placeholder="Поиск">
+    <div class="words-bar">
+        <h1 class="word">А</h1>
+        <h1 class="word">Б</h1>
+        <h1 class="word">В</h1>
+        <h1 class="word">Г</h1>
+        <h1 class="word">Д</h1>
+        <h1 class="word">Е</h1>
+        <h1 class="word">Ё</h1>
+        <h1 class="word">Ж</h1>
+        <h1 class="word">З</h1>
+        <h1 class="word">И</h1>
+        <h1 class="word">К</h1>
+        <h1 class="word">Л</h1>
+        <h1 class="word">М</h1>
+        <h1 class="word">Н</h1>
+        <h1 class="word">О</h1>
+        <h1 class="word">П</h1>
+        <h1 class="word">Р</h1>
+        <h1 class="word">С</h1>
+        <h1 class="word">Т</h1>
+        <h1 class="word">У</h1>
+        <h1 class="word">Ф</h1>
+        <h1 class="word" style="margin-right: 0">Х</h1>
+        <h1 class="word">Ц</h1>
+        <h1 class="word">Ч</h1>
+        <h1 class="word">Ш</h1>
+        <h1 class="word">Щ</h1>
+        <h1 class="word">Ы</h1>
+        <h1 class="word">Э</h1>
+        <h1 class="word">Ю</h1>
+        <h1 class="word">Я</h1>
     </div>
+</form>
+<h1 class="title">Герои Оренбуржья</h1>
+<div class="heroes">
+
+</div>
 <footer>
     <img src="{{ url_for('static', filename='images/emblem.png') }}">
     <h1>КНИГА ПАМЯТИ</br> ОРЕНБУРГСКОЙ ОБЛАСТИ</h1>
@@ -80,22 +80,24 @@
 </body>
 <script>
     let resizeTimer;
-window.addEventListener("resize",()=>{
-  document.body.classList.add("resize-animation-stopper");
-  clearTimeout(resizeTimer);
-  resizeTimer =setTimeout(()=>{
-    document.body.classList.remove("resize-animation-stopper");
-  },400);
-});
-   
-    let selectedLetter = '0';
+    window.addEventListener("resize", () => {
+        document.body.classList.add("resize-animation-stopper");
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            document.body.classList.remove("resize-animation-stopper");
+        }, 400);
+    });
+
+    let selectedLetter = '';
     const letterButtons = document.querySelectorAll('.word');
+
     function handleLetterClick(event) {
         letterButtons.forEach(btn => btn.classList.remove('used'));
         const clickedLetter = event.target;
         clickedLetter.classList.add('used');
         selectedLetter = clickedLetter.textContent;
     }
+
     letterButtons.forEach(button => {
         button.addEventListener('click', handleLetterClick);
     });

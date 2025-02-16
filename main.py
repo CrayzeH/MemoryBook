@@ -28,5 +28,11 @@ def full_search():
         print(request.form)
     return render_template("full-search.html")
 
+@app.route('/send_data', methods=["GET", "POST"])
+def send_data():
+    if request.method == "POST":
+        print(request.form)
+    return render_template("send-data.html")
+
 if __name__ == '__main__':
     app.run()

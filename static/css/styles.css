@@ -125,6 +125,7 @@ h4 {
         transition: 0.3s;
         font-weight: bold;
         text-decoration: underline white;
+
         a {
             color: white;
         }
@@ -244,6 +245,7 @@ footer {
 }
 
 .word {
+    transition: 0.3s;
     width: 2.8125vw;
     height: 2.8125vw;
     display: flex;
@@ -275,6 +277,7 @@ footer {
 
 .used {
     background-color: #78a7b1;
+    transition: 0.3s;
 }
 
 .contact-text {
@@ -282,6 +285,7 @@ footer {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+
     h1 {
         margin-top: 6.5vw;
         margin-bottom: 3vw;
@@ -290,6 +294,7 @@ footer {
         font-weight: bold;
         color: white
     }
+
     h2 {
         font-size: 1.66vw;
         font-weight: normal;
@@ -307,11 +312,14 @@ h1 {
     margin-top: 4vw;
 }
 
-.resize-animation-stopper * {animation: none !important; transition: none !important;}
+.resize-animation-stopper * {
+    animation: none !important;
+    transition: none !important;
+}
 
 .small-search-bar {
     transition: 0.3s;
-    width: 40.7vw;
+    width: 42vw;
     height: 4.37vw;
     background-color: #465D62;
     padding-left: 2vw;
@@ -321,6 +329,10 @@ h1 {
     color: white;
     border: none;
     outline: none;
+}
+
+.tiny-bar {
+    width: 27.8vw;
 }
 
 .small-search-bar::placeholder {
@@ -334,6 +346,10 @@ h1 {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+}
+
+.your-data {
+    height: 16.25vw;
 }
 
 .string-of-inputs {
@@ -353,4 +369,41 @@ h1 {
     font-size: 1.2vw;
     font-weight: 550;
     font-family: "Montserrat", sans-serif;
+}
+
+h2 {
+    margin-top: 3vw;
+    width: 86.66vw;
+    font-size: 2.08vw;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    margin-bottom: 3vw;
+}
+
+.add-or-check {
+    width: 86.66vw;
+    display: flex;
+    margin-top: 5vw;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        margin: 0;
+        width: 40vw;
+        font-size: 2.08vw;
+        font-weight: bold;
+        font-family: "Montserrat", sans-serif;
+        color: white;
+    }
+
+    h2 {
+        margin: 0;
+        width: 25vw;
+        text-align: right;
+        font-weight: 650;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.25vw;
+        color: white;
+    }
 }
