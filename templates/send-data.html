@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <title>Книга памяти Оренбургской области</title>
+</head>
+<body>
+<header>
+    <div class="left-header button-hover-effect">
+        <a href="{{ url_for('main') }}">КНИГА ПАМЯТИ</br> ОРЕНБУРГСКОЙ ОБЛАСТИ</a>
+    </div>
+    <div class="right-header">
+        <a href="{{ url_for('hero_search') }}">Герои</a>
+        <a href="#">Боевые действия</a>
+        <a class="authorize-button">Авторизация</a>
+    </div>
+</header>
+<div class="header-line">
+
+</div>
+<h2>Ваши данные</h2>
+    <form class="inputs your-data" name="form" method="post">
+        <div class="string-of-inputs">
+            <input class="small-search-bar" type="search" name="organs" placeholder="Орган местного самоуправления/военного управления">
+            <input class="small-search-bar" type="search" name="organ-name" placeholder="Наименование органа">
+        </div>
+        <div class="string-of-inputs">
+            <input class="small-search-bar tiny-bar" type="search" name="F" placeholder="Фамилия">
+            <input class="small-search-bar tiny-bar" type="search" name="I" placeholder="Имя">
+            <input class="small-search-bar tiny-bar" type="search" name="O" placeholder="Отчество">
+        </div>
+        <div class="string-of-inputs">
+            <input class="small-search-bar" type="search" name="tel" placeholder="Номер телефона">
+            <input class="small-search-bar" type="search" name="email" placeholder="Электронная почта">
+        </div>
+    </form>
+    <div class="add-or-check">
+        <h1>Сведения о жителе Оренбурга</h1>
+        <h2>История операций</h2>
+    </div>
+<footer>
+    <img src="{{ url_for('static', filename='images/emblem.png') }}">
+    <h1>КНИГА ПАМЯТИ</br> ОРЕНБУРГСКОЙ ОБЛАСТИ</h1>
+    <div class="navbar-footer">
+        <a>Герои</a>
+        <a>Боевые действия</a>
+        <a>Техническая поддержка</a>
+        <a href="{{ url_for('contacts') }}">Контакты</a>
+    </div>
+    <h6>Любое использование материалов допускается только с согласия редакции. Все права на изображения и тексты
+        принадлежат их авторам. © 2025. Все права защищены.</h6>
+</footer>
+</body>
+<script>
+    let resizeTimer;
+window.addEventListener("resize",()=>{
+  document.body.classList.add("resize-animation-stopper");
+  clearTimeout(resizeTimer);
+  resizeTimer =setTimeout(()=>{
+    document.body.classList.remove("resize-animation-stopper");
+  },400);
+});
+</script>
+</html>
