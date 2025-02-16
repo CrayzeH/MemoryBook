@@ -13,10 +13,14 @@
           rel="stylesheet">
     <title>Книга памяти Оренбургской области</title>
 </head>
-<body class="main-page">
+{% if boec_id == 2 %}
+<body class="AFGAN-page">
+{% else %}
+<body class="CBO-page">
+{% endif %}
 <header>
     <div class="left-header button-hover-effect">
-        <a href="#">КНИГА ПАМЯТИ</br> ОРЕНБУРГСКОЙ ОБЛАСТИ</a>
+        <a href="{{ url_for('main') }}">КНИГА ПАМЯТИ</br> ОРЕНБУРГСКОЙ ОБЛАСТИ</a>
     </div>
     <div class="right-header">
         <a href="{{ url_for('hero_search') }}">Герои</a>
@@ -28,44 +32,34 @@
         {% endif %}
     </div>
 </header>
-<h1 class="hello-message">Книга-мемориал</br>воинов-оренбуржцев</h1>
-<form name="form" method="post">
-    <input maxlength="55" class="global-input" name="search-data" type="search" placeholder="Найдите своего героя">
-</form>
-<h4>Или попробуйте <span><a href="{{ url_for('full_search') }}">расширенный поиск</a></span></h4>
-<div class="persons">
-    <h2>Герои Оренбуржья</h2>
-    <div class="persons-cont">
-        <div class="uno-person">
-            <a href="{{ url_for('boec', boec_id=0) }}">
-                <img src="{{ url_for('static', filename='images/1.png') }}">
-            </a>
-            <h1>{{ persons[0]['fio'] }}</h1>
-            <h2>Участник СВО</h2>
-        </div>
-        <div class="uno-person">
-            <a href="{{ url_for('boec', boec_id=1) }}">
-                <img src="{{ url_for('static', filename='images/2.png') }}">
-            </a>
-            <h1>{{ persons[1]['fio'] }}</h1>
-            <h2>Участник СВО</h2>
-        </div>
-        <div class="uno-person">
-            <a href="{{ url_for('boec', boec_id=2) }}">
-                <img src="{{ url_for('static', filename='images/3.png') }}">
-            </a>
-            <h1>{{ persons[2]['fio'] }}</h1>
-            <h2>Участник Афганской войны</h2>
-        </div>
+<div class="boec">
+    {% if boec_id == 0 %}
+    <div class="ppl-img">
+        <img src="{{ url_for('static', filename='images/1.png') }}">
     </div>
+    <h1>{{ persons[boec_id]['fio'] }}</h1>
+    <h2>{{ persons[boec_id]['info'] }}</h2>
+    <h1>НАГРАДЫ</h1>
+    <img class="img-boec" src="{{ url_for('static', filename='images/reward-2.png') }}">
+    {% elif boec_id == 1 %}
+    <div class="ppl-img">
+        <img src="{{ url_for('static', filename='images/2.png') }}">
+    </div>
+    <h1>{{ persons[boec_id]['fio'] }}</h1>
+    <h2>{{ persons[boec_id]['info'] }}</h2>
+    <img class="img-boec" src="{{ url_for('static', filename='images/reward-2.png') }}">
+    {% elif boec_id == 2 %}
+    <div class="ppl-img">
+        <img src="{{ url_for('static', filename='images/3.png') }}">
+    </div>
+    <h1>{{ persons[boec_id]['fio'] }}</h1>
+    <h2>{{ persons[boec_id]['info'] }}</h2>
+    <img class="img-boec" src="{{ url_for('static', filename='images/reward-1.jpg') }}">
+    {% else %}
+    <h1>Боец не выбран</h1>
+    {% endif %}
 </div>
-<a href="{{ url_for('hero_search') }}" class="full-warriors">Полный список</a>
-<h3>Если вы являетесь близким родственником погибшего человека в боевых действиях, то вы можете направить уточненную
-    информацию в виде электронного документа по адресу электронной почты: <span style="font-weight: bold;">office36@mail.orb.ru</span>
-</h3>
-<div class="mapa">
-
-</div>
+<a style="margin-top: 4vw;" href="#" class="full-warriors">Распечатать</a>
 <footer>
     <img src="{{ url_for('static', filename='images/emblem.png') }}">
     <h1>КНИГА ПАМЯТИ</br> ОРЕНБУРГСКОЙ ОБЛАСТИ</h1>

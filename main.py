@@ -46,5 +46,12 @@ def authorize():
         return redirect(url_for('send_data'))
     return render_template("authorization.html", is_authorized=GLOBAL_AUTHORIZE)
 
+@app.route('/boec/<int:boec_id>', methods=["GET", "POST"])
+def boec(boec_id):
+    print(boec_id)
+    persons = get_warrior()
+    print(json.dumps(persons, indent=4, ensure_ascii=False))
+    return render_template('boec.html', is_authorized=GLOBAL_AUTHORIZE, persons=persons, boec_id=boec_id)
+
 if __name__ == '__main__':
     app.run()

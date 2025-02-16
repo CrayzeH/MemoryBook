@@ -12,6 +12,18 @@ body {
     background-repeat: no-repeat;
 }
 
+.CBO-page {
+    background-image: url("../images/CBO-bg.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.AFGAN-page {
+    background-image: url("../images/AFGAN-bg.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
 header {
     width: 86.66vw;
     height: 7vw;
@@ -71,6 +83,7 @@ header {
             text-decoration: none;
             background-color: #dd4c3f;
         }
+
         img {
             width: 4.16vw;
             height: 4.16vw;
@@ -378,7 +391,7 @@ h1 {
     align-items: center;
 }
 
-.sub-s{
+.sub-s {
     padding-top: 1.4vw;
 }
 
@@ -394,7 +407,7 @@ h1 {
     font-family: "Montserrat", sans-serif;
 }
 
-.au-frm{
+.au-frm {
     max-width: 39.0625vw;
     padding-top: 9.5vw;
     text-align: center;
@@ -406,7 +419,7 @@ h1 {
     padding-top: 0.5vw;
 }
 
-.au-f{
+.au-f {
     width: 39.0625vw;
     height: 27.3958vw;
     display: flex;
@@ -415,7 +428,7 @@ h1 {
     align-items: center;
 }
 
-.au-ff{
+.au-ff {
     max-width: 34.1146vw;
     width: 100%;
 }
@@ -440,25 +453,34 @@ h1 {
     font-family: "Montserrat", sans-serif;
 }
 
-.lpa{
+.lpa {
     display: flex;
     flex-direction: column;
-    input{
-    margin-top: 1vw;
-    height: 3.64081vw;
-    border: 0vw;
-    outline:0.1563vw solid rgba(34, 43, 45, 0.5);
-    outline-offset:-0.1563vw;
-    font-size: 1.25vw;
-    font-family: "Montserrat", sans-serif;
+
+    input {
+        margin-top: 1vw;
+        height: 3.64081vw;
+        border: 0vw;
+        outline: 0.1563vw solid rgba(34, 43, 45, 0.5);
+        outline-offset: -0.1563vw;
+        font-size: 1.25vw;
+        font-family: "Montserrat", sans-serif;
     }
+
     input::placeholder {
-    color: rgba(34, 43, 45, 0.5);
-    font-size: 1.25vw;
-    font-family: "Montserrat", sans-serif;
+        color: rgba(34, 43, 45, 0.5);
+        font-size: 1.25vw;
+        font-family: "Montserrat", sans-serif;
     }
-    input[type=text]{padding:0 2vw;}
-    input[type=password]{padding:0 2vw; font-size: 1.25vw;}
+
+    input[type=text] {
+        padding: 0 2vw;
+    }
+
+    input[type=password] {
+        padding: 0 2vw;
+        font-size: 1.25vw;
+    }
 }
 
 h2 {
@@ -497,3 +519,49 @@ h2 {
         color: white;
     }
 }
+
+.ppl-img {
+    width: 57.28vw;
+    height: 44.4vw;
+    display: flex;
+    margin-top: 7vw;
+
+    img {
+        width: 28.28vw;
+        height: 44.4vw;
+    }
+}
+
+.boec {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+
+    h1 {
+        margin-top: 6vw;
+        text-align: center;
+        padding-left: 0.4vw;
+        padding-right: 0.4vw;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 3.6vw;
+        font-weight: bold;
+        color: white;
+        border: 0.6vw solid white;
+    }
+
+    h2 {
+        width: 77.6vw;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.6vw;
+        font-weight: normal;
+        color: white;
+        text-align: center;
+    }
+}
+
+.img-boec {
+        width: 9.7vw;
+        height: 18.6vw;
+    }
