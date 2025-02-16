@@ -20,7 +20,11 @@
     <div class="right-header">
         <a href="{{ url_for('hero_search') }}">Герои</a>
         <a href="#">Боевые действия</a>
-        <a class="authorize-button">Авторизация</a>
+        {% if is_authorized == 0 %}
+        <a href="{{ url_for('authorize') }}" class="authorize-button">Авторизация</a>
+        {% else %}
+        <a href="{{ url_for('send_data') }}"><img src="{{ url_for('static', filename='images/profile.png') }}"></a>
+        {% endif %}
     </div>
 </header>
 <div class="contact-text">

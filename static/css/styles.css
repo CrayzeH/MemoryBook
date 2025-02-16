@@ -71,6 +71,10 @@ header {
             text-decoration: none;
             background-color: #dd4c3f;
         }
+        img {
+            width: 4.16vw;
+            height: 4.16vw;
+        }
     }
 }
 
