@@ -569,3 +569,10 @@ h2 {
 .dispno {
     display: none;
 }
+
+.map {
+    width: 800px;
+    height: 600px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
