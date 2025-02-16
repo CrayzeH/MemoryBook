@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/persons.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,9 +66,31 @@
         <h1 class="word">Я</h1>
     </div>
 </form>
-<h1 class="title">Герои Оренбуржья</h1>
-<div class="heroes">
-
+<div style="margin: 0;" class="persons">
+    <h2>Герои Оренбуржья</h2>
+    <div class="persons-cont">
+        <div id="1" class="uno-person">
+            <a href="{{ url_for('boec', boec_id=0) }}">
+                <img src="{{ url_for('static', filename='images/1.png') }}">
+            </a>
+            <h1>{{ persons[0]['fio'] }}</h1>
+            <h2>Участник СВО</h2>
+        </div>
+        <div id="2" class="uno-person">
+            <a href="{{ url_for('boec', boec_id=1) }}">
+                <img src="{{ url_for('static', filename='images/2.png') }}">
+            </a>
+            <h1>{{ persons[1]['fio'] }}</h1>
+            <h2>Участник СВО</h2>
+        </div>
+        <div id="3" class="uno-person">
+            <a href="{{ url_for('boec', boec_id=2) }}">
+                <img src="{{ url_for('static', filename='images/3.png') }}">
+            </a>
+            <h1>{{ persons[2]['fio'] }}</h1>
+            <h2>Участник Афганской войны</h2>
+        </div>
+    </div>
 </div>
 <footer>
     <img src="{{ url_for('static', filename='images/emblem.png') }}">
@@ -93,13 +116,48 @@
     });
 
     let selectedLetter = '';
+    let first = document.getElementById('1');
+    let second = document.getElementById('2');
+    let third = document.getElementById('3');
     const letterButtons = document.querySelectorAll('.word');
 
     function handleLetterClick(event) {
-        letterButtons.forEach(btn => btn.classList.remove('used'));
         const clickedLetter = event.target;
-        clickedLetter.classList.add('used');
-        selectedLetter = clickedLetter.textContent;
+        if (clickedLetter.classList.contains('used')) {
+            clickedLetter.classList.remove('used');
+            selectedLetter = "";
+        }
+        else {
+            letterButtons.forEach(btn => btn.classList.remove('used'));
+            clickedLetter.classList.add('used');
+            selectedLetter = clickedLetter.textContent;
+        }
+        console.log(selectedLetter)
+        if (selectedLetter === "И") {
+            first.classList.remove('dispno');
+            second.classList.add('dispno');
+            third.classList.add('dispno');
+        }
+        else if (selectedLetter === "Ч") {
+            first.classList.add('dispno');
+            second.classList.remove('dispno');
+            third.classList.add('dispno');
+        }
+        else if (selectedLetter === "Б") {
+            first.classList.add('dispno');
+            second.classList.add('dispno');
+            third.classList.remove('dispno');
+        }
+        else if (selectedLetter === "") {
+            first.classList.remove('dispno');
+            second.classList.remove('dispno');
+            third.classList.remove('dispno');
+        }
+        else {
+            first.classList.add('dispno');
+            second.classList.add('dispno');
+            third.classList.add('dispno');
+        }
     }
 
     letterButtons.forEach(button => {

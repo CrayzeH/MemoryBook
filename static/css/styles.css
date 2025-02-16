@@ -565,3 +565,7 @@ h2 {
         width: 9.7vw;
         height: 18.6vw;
     }
+
+.dispno {
+    display: none;
+}

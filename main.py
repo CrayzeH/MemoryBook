@@ -16,9 +16,10 @@ def main():
 
 @app.route('/hero-search', methods=["GET", "POST"])
 def hero_search():
+    persons = get_warrior()
     if request.method == "POST":
         print(request.form['input-name'])
-    return render_template("hero-search.html", is_authorized=GLOBAL_AUTHORIZE)
+    return render_template("hero-search.html", is_authorized=GLOBAL_AUTHORIZE, persons=persons)
 
 @app.route('/contacts', methods=["GET", "POST"])
 def contacts():
