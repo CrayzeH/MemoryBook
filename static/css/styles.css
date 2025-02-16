@@ -364,15 +364,101 @@ h1 {
 }
 
 .submit-search {
-    width: 86.66vw;
-    height: 4.37vw;
+    width: 39.0625vw;
+    height: 4.87vw;
     background-color: #DB2315;
-    border: none;
+    border: solid 0.1vw black;
     outline: none;
     color: white;
-    font-size: 1.2vw;
+    font-size: 1.9vw;
     font-weight: 550;
     font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-s{
+    padding-top: 1.4vw;
+}
+
+.submit-search1 {
+    border: none;
+    width: 14.3229vw;
+    height: 2.8250vw;
+    background-color: #DB2315;
+    outline: none;
+    color: white;
+    font-size: 1.3542vw;
+    font-weight: 550;
+    font-family: "Montserrat", sans-serif;
+}
+
+.au-frm{
+    max-width: 39.0625vw;
+    padding-top: 9.5vw;
+    text-align: center;
+}
+
+.elk_img {
+    width: 12.51vw;
+    height: 4.94791vw;
+    padding-top: 0.5vw;
+}
+
+.au-f{
+    width: 39.0625vw;
+    height: 27.3958vw;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+}
+
+.au-ff{
+    max-width: 34.1146vw;
+    width: 100%;
+}
+
+.login-separator {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1vw 0;
+}
+
+.login-separator .line {
+    flex: 1;
+    height: 0.05211vw;
+    background-color: black;
+}
+
+.login-separator .text {
+    margin: 0 1.6508vw;
+    color: black;
+    font-size: 1.05vw;
+    font-family: "Montserrat", sans-serif;
+}
+
+.lpa{
+    display: flex;
+    flex-direction: column;
+    input{
+    margin-top: 1vw;
+    height: 3.64081vw;
+    border: 0vw;
+    outline:0.1563vw solid rgba(34, 43, 45, 0.5);
+    outline-offset:-0.1563vw;
+    font-size: 1.25vw;
+    font-family: "Montserrat", sans-serif;
+    }
+    input::placeholder {
+    color: rgba(34, 43, 45, 0.5);
+    font-size: 1.25vw;
+    font-family: "Montserrat", sans-serif;
+    }
+    input[type=text]{padding:0 2vw;}
+    input[type=password]{padding:0 2vw; font-size: 1.25vw;}
 }
 
 h2 {

@@ -27,8 +27,25 @@
         {% endif %}
     </div>
 </header>
-<form name="form" method="post">
-    <input name="authoriz" class="submit-search" type="submit" value="Авторизация">
+<form name="form" class="au-frm" method="post">
+    <div class="submit-search"><p>Авторизация</p></div>
+    <div class="au-f">
+    <a><img class="elk_img" src="{{ url_for('static', filename='images/ELK.png') }}"></a>
+        <div class="au-ff">
+         <div class="login-separator">
+            <span class="line"></span>
+            <span class="text">Или войдите по логину</span>
+            <span class="line"></span>
+         </div>
+            <div class="lpa">
+                <input name="login_a" class="log_a1" type="text" placeholder="Логин">
+                <input name="pass_a" class="log_a2" type="password" placeholder="Пароль">
+            </div>
+                <div class="sub-s">
+                    <input name="authoriz" class="submit-search1" type="submit" value="Войти">
+                </div>
+        </div>
+    </div>
 </form>
 <footer>
     <img src="{{ url_for('static', filename='images/emblem.png') }}">
