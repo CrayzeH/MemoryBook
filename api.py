@@ -1,13 +1,21 @@
+from ctypes import LibraryLoader
+
 import requests
 import json
+import base64
 from base64 import b64encode
+import re
 
 url = 'https://geois2.orb.ru/api/resource/8804/feature/'
-username = "hackathon_27"
-password = "hackathon_27_25"
+username = "X2h+YWNrYXRob25fMjc=@#$"
+password = "X2h+YWNrYXRob25fMjdfMjU=*&^"
+
+def decrypt(encrypted_text):
+    cleaned_text = ''.join(c for c in encrypted_text if c.isalnum() or c in {'+', '/', '='})
+    return base64.b64decode(cleaned_text).decode('utf-8')[1] + base64.b64decode(cleaned_text).decode('utf-8')[3:]
 
 def basic_auth(username, password):
-    token = b64encode(f"{username}:{password}".encode('utf-8')).decode("ascii")
+    token = b64encode(f"{decrypt(username)}:{decrypt(password)}".encode('utf-8')).decode("ascii")
     return f'Basic {token}'
 
 def get_warrior():
